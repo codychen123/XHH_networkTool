@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "NetworkTool.h"
 
 @interface ViewController ()
 
@@ -17,8 +18,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    [self requestWithNetworkTool];
 }
 
+- (void)requestWithNetworkTool {
+    //get请求
+    [[NetworkTool sharedTool] requestWithURLString:@"https://httpbin.org/get" parameters:@{@"name": @"xiaoming"} method:@"GET" callBack:^(id responseObject) {
+        
+        NSLog(@"%@",responseObject);
+    }];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
